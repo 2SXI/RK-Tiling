@@ -46,20 +46,23 @@
   }
 
   /* ─────────────────────────────────────
-     ACTIVE NAV LINK — Scroll spy
+     ACTIVE NAV LINK — Current page
   ───────────────────────────────────── */
-  var sections = qsa('section[id]');
-  var navLinks = qsa('.nav-link');
+  var navLinks = qsa('.nav-link, .mob-link');
+
+  function currentPageFile() {
+    var path = window.location.pathname.split('/').pop();
+    return path === '' ? 'index.html' : path;
+  }
 
   function updateActiveLink() {
-    var scrollPos = window.scrollY + (navbar ? navbar.offsetHeight : 68) + 24;
-    var current = '';
-    sections.forEach(function (sec) {
-      if (sec.offsetTop <= scrollPos) current = sec.id;
-    });
+    var current = currentPageFile();
     navLinks.forEach(function (link) {
       var href = link.getAttribute('href');
-      link.classList.toggle('active', href === '#' + current);
+      if (!href) return;
+      var file = href.split('#')[0].split('/').pop();
+      if (file === '') file = 'index.html';
+      link.classList.toggle('active', file === current);
     });
   }
 
@@ -70,10 +73,10 @@
     updateProgress();
     updateNavbar();
     updateFloatBtn();
-    updateActiveLink();
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run once on load
+  onScroll();          // run once on load
+  updateActiveLink();  // set active nav link for this page
 
   /* ─────────────────────────────────────
      MOBILE MENU
@@ -560,6 +563,8 @@
         var offset = (navH ? navH.offsetHeight : 68) + 8;
         var top = quoteSection.getBoundingClientRect().top + window.pageYOffset - offset;
         setTimeout(function () { window.scrollTo({ top: top, behavior: 'smooth' }); }, 200);
+      } else {
+        setTimeout(function () { window.location.href = 'contact.html#quote'; }, 150);
       }
     });
   }
