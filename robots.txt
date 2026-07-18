@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rkhardware.co.zw/sitemap.xml
+Sitemap: https://rkhardwareconstruction.co.zw/sitemap.xml

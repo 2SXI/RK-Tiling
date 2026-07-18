@@ -628,7 +628,7 @@
       '*Product / Category:* ' + product
     ];
     if (details) lines.push('*Project Details:* ' + details);
-    lines.push('', '_Sent from rkhardware.co.zw_');
+    lines.push('', '_Sent from rkhardwareconstruction.co.zw_');
 
     var msg = lines.join('\n');
     var waUrl = 'https://wa.me/263783167524?text=' + encodeURIComponent(msg);
