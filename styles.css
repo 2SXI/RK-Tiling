@@ -529,3 +529,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 @media(max-width:900px){.mini-products-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.mini-products-grid{grid-template-columns:1fr}}
+
+/* Real logo image */
+.logo-mark-img{height:44px;width:auto;flex-shrink:0;display:block}
+.logo-mark-img.sm{height:36px}
