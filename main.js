@@ -278,7 +278,8 @@
     var tileArea = area * 1.10;
     var tiles = ceil(tileArea);
     var adhesive = ceil(area / 2.2);
-    var grout = ceil(area / 8);
+    var grout = ceil(area / 20);   // 5 kg grout covers 20 m\u00b2
+    var bonding = ceil(area / 4);  // 5 L bonding liquid covers 20 m\u00b2 (0.25 L per m\u00b2)
 
     var packRow = '';
     if (type === 'floor') {
@@ -298,7 +299,8 @@
       resultItem('Tile area needed (incl. 10% waste)', tiles, 'm\u00b2') +
       packRow +
       resultItem('Tile adhesive (20 kg bags)', adhesive, 'bags') +
-      resultItem('Grout (5 kg packs)', grout, 'packs');
+      resultItem('Grout (5 kg packs)', grout, 'packs') +
+      resultItem('Bonding liquid', bonding, 'litres');
   }
 
   function calcArea(type) {
